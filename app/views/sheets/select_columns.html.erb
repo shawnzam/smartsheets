@@ -1,0 +1,13 @@
+<style type="text/css">
+    select.selbox{
+        height: 400px;
+    }
+    .btn{
+        margin: 10px;
+    }
+</style>
+
+<%= form_tag("/sheets/go/#{params[:id]}", method: "post") do %>
+  <%= select_tag "columns", options_for_select(@columns), multiple: true, class: "selbox" %><br>
+  <%= submit_tag("Submit", class: "btn") %>
+<% end %>

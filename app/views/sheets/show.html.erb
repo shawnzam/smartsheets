@@ -1,0 +1,73 @@
+ <style type="text/css">
+table td {
+    /*height: 325px;*/
+    overflow: hidden;
+    width: 33%;
+    vertical-align: top;
+    padding-left: 10px;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+ dd {
+        max-height: 40px;
+       overflow: hidden;
+      text-overflow: ellipsis; 
+     }
+
+
+@media print {
+      .header {
+        display: none;
+      }
+      table { 
+        width: 100%;
+        table-layout: fixed;
+        page-break-inside: avoid;
+      }
+
+    table td {
+        width: 33%;
+        vertical-align: top;
+        padding-left: 10px;
+    }  
+
+    table td div {
+        height: 300px;
+        overflow: hidden;
+        font-size: 10px;
+     }  
+
+     table td div {
+        height: 300px;
+        /*overflow: hidden;*/
+        font-size: 10px;
+     }
+ dd {
+        max-height: 40px;
+       overflow: hidden;
+      text-overflow: ellipsis; 
+     }
+
+
+}
+ </style>
+ <% @data.each_slice(3) do |printrow|  %>
+ <table border = "1">
+     <tr>
+        <% printrow.each do |e| %>
+                <td>
+                    <div>
+                        <dl>
+                       <% e.each do |k,v| %>
+                          <dt><%= k  unless v.nil?%></dt> 
+                           <dd><%= v  unless v.nil?%></dd>
+                       <% end %>
+                        </dl>
+                    </div>
+                </td>
+                <% end %>
+            </tr>
+ </table>
+    <% end %>
